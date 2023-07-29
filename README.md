@@ -25,3 +25,5 @@ The third cell does generation on a few images from the ultrasound/normal direct
 For example,
 
 If we input ultrasound/normal (5).png and the prompt "ultra sound image of breast with malignant cancer". we would generate the following image.
+
+![Local Image](ultrasound/normal/normal (5).png))
