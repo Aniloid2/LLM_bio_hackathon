@@ -26,4 +26,4 @@ For example,
 
 If we input ultrasound/normal (5).png and the prompt "ultra sound image of breast with malignant cancer". we would generate the following image.
 
-![Local Image](./ultrasound/normal/normal (5).png)
+![alt img](https://github.com/Aniloid2/LLM_bio_hackathon/ultrasound/normal/normal (5).png)
