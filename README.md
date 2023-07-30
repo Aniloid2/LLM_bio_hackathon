@@ -131,3 +131,10 @@ For the image + text -> image models, run
 python inference_img2img_v2.py
 ```
 The output image will be saved in the folder `saved_images/img2img`.
+
+
+## Some examples for the generated ultrasound images
+
+![f](./saved_images/example_for_pre/us-benign.png "Title")
+
+
