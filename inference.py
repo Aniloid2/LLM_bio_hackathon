@@ -34,7 +34,7 @@ pipe = StableDiffusionImg2ImgPipeline.from_pretrained(model_id, torch_dtype=torc
 pipe.scheduler = EulerDiscreteScheduler.from_config(pipe.scheduler.config)
 pipe.to("cuda")
 
-pipe.unet.load_attn_procs("path_to_saved_model_v1")
+pipe.unet.load_attn_procs("normal_to_malignant_image2image")
 
 
  
