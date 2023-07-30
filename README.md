@@ -17,6 +17,29 @@ create a conda enviroment with
 
 conda env create -f environment.yml
 
+Downloading the dataset with Kaggle from:
+
+https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset
+
+if you have a kaggle account just run
+
+kaggle datasets download -d aryashah2k/breast-ultrasound-images-dataset
+
+This will create a Dataset_BUSI_with_GT folder, with 3 class folders (normal,benig and malignant)
+
+We expect the folder structure to be like
+
+Dataset_BUSI_with_GT
+LLM_bio_hackathon/data_loading.py
+
+in the LLM_bio_hackathon dicrectory run
+
+python data_loading.py
+
+This will remove the mask images from the classes and copy the images into the 'ultrasound' folder
+
+The dataset and environment are now ready!
+
 go into diffusers folder
 
 cd diffusers
