@@ -86,19 +86,19 @@ For stable-diffusion-v1 model + DreamBooth method, run
 ```
 bash train_v1.sh
 ```
-The saved checkpoints are in the folder `dreambooth_lora_v1`.
+The saved checkpoints are in the folder `output_models`.
 
 For stable-diffusion-2 model + DreamBooth method, run
 ```
 bash train_v2.sh
 ```
-The saved checkpoints are in the folder `dreambooth_lora_v1`.
+The saved checkpoints are in the folder `output_models`.
 
 For stable-diffusion-2 model + DreamBooth with LORA method, run
 ```
 bash train_lora_v2.sh
 ```
-The saved checkpoints are in the folder `dreambooth_lora_v1`.
+The saved checkpoints are in the folder `path_to_saved_model`.
 
 
 
@@ -118,3 +118,16 @@ python inference_text2img_lora_v1.py
 ```
 by changing the prompt to your own text prompt.
 The output image will be saved in the folder `saved_images/dreambooth_lora_v1`.
+
+For other text-> image models, run
+```
+python inference_text2img.py
+```
+by changing the prompot in the python file with your own text prompt.
+The output image will be saved in the folder `saved_images/text2img`.
+
+For the image + text -> image models, run
+```
+python inference_img2img_v2.py
+```
+The output image will be saved in the folder `saved_images/img2img`.
