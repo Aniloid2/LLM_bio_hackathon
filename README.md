@@ -1,106 +1,108 @@
-# LLM_bio_hackathon
+# LLM bio hackathon (Ultrasound image simulator)
 
-hackathon repository for llm bio hackathon 2023
 
-install conda on linux with
+## Python environment configuration
 
+Install `conda` on linux with command
+```
 wget https://repo.anaconda.com/archive/Anaconda3-2023.07-1-Linux-x86_64.sh
-
-or the latest version from https://www.anaconda.com/download#downloads for your particular machine
-
+```
+or the latest version from https://www.anaconda.com/download#downloads for your particular machine.
 Then do:
-
+```
 bash Anaconda3-2023.07-1-Linux-x86_64.sh
+```
 
-and follow the installation guide
-
-create a conda enviroment with
-
+Now create a conda enviroment with name `ultrasound`
 ```
 conda env create -f environment.yml
 ```
-
-then
-
+Finally, activate the environment by
 ```
 conda activate ultrasound
 ```
-Also, clone the diffusers library in the local reposetory
 
-with git clone https://github.com/huggingface/diffusers.git
 
-Downloading the dataset with Kaggle from:
+## Data preparation
 
-https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset
+The data that we use to fine-tune is the [Breast Ultrasound Images Dataset](https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset), which contains 780 images with size 500*500.
+The images are categorized into three classes, which are normal, benign, and malignant.
+One can download the dataset from the link 
+https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset.
+The images will be stored in the folder `Dataset_BUSI_with_GT`.
 
-if you have a kaggle account just run
 
-kaggle datasets download -d aryashah2k/breast-ultrasound-images-dataset
 
-This will create a Dataset_BUSI_with_GT folder, with 3 class folders (normal,benig and malignant)
+## Data processing
 
-We expect the folder structure to be like
+After downloading the ultrasound dataset, create a folder `ultrasound` to store all the ultrasound images that exclude the **mask**.
+Then create three folders `benign`, `malignant` and `normal` to store the corresponded class of images.
 
-Dataset_BUSI_with_GT
-LLM_bio_hackathon/data_loading.py
 
-in the LLM_bio_hackathon dicrectory run
+This can be done by runing 
+```
+python data.py
+```
 
-python data_loading.py
-
-This will remove the mask images from the classes and copy the images into the 'ultrasound' folder
-
+Remember to change the `source_dir` and `destination_dir` for different classes in the `data.py`.
+Finally, this will remove the mask images from the classes and copy the images into the `ultrasound` folder.
 The dataset and environment are now ready!
 
-go into diffusers folder
 
-cd diffusers
 
-then do
 
-`accelerate config`
+## Fine-tuning
 
-the file (default_config.yaml) in the following folder (~/.cache/huggingface/accelerate) has to look like the following
+The training pipeline is mainly based on https://huggingface.co/docs/diffusers/v0.11.0/en/training/dreambooth.
 
-compute_environment: LOCAL_MACHINE
-distributed_type: 'NO'
-downcast_bf16: 'no'
-gpu_ids: '1'
-machine_rank: 0
-main_training_function: main
-mixed_precision: 'no'
-num_machines: 1
-num_processes: 1
-rdzv_backend: static
-same_network: true
-tpu_env: []
-tpu_use_cluster: false
-tpu_use_sudo: false
-use_cpu: false
+Specifically, we use the stable-diffusion models for fine-tuning
+based on two methods: `DreamBooth`, `DreamBooth with LORA`.
+For each method, we fine-tune in two classes of stable-diffusion models:
+`stable-diffusion-v1`, `stable-diffusion-2`.
 
-train model with
-bash train_start.sh
+The fine-tuning process follows by the order 
+`normal->benign->malignant` with totally 3 ruonds of training.
 
-This will generate 100 class specific images and insert them in the ultrasoung_classbase folder
 
-Then, it will run 1000 steps of stable diffusion on the DiffusionPipeline
+To run the code, firstly install Diffusers from Github:
+```
+pip install git+https://github.com/huggingface/diffusers
+pip install -U -r diffusers/examples/dreambooth/requirements.txt
+```
 
-Next, use the inference_img_to_img.ipynb
+After all the dependencies have been set up, initialize a Accelerate environment with:
+```
+accelerate config
+```
 
-The first cell is to do text-to-image inference
 
-for example:
+Then run the following code to fine-tune in a stable-diffusion-v1 model by DreamBooth with LORA method.
+```
+bash dreambooth_lora_v1.sh
+```
 
-using the prompt: ultrasound image of breast with cancer malignant
+For stable-diffusion-v1 model + DreamBooth method, run
+```
+bash dreambooth_v1.sh
+```
 
-will output a random image of what soft tissue would look like if it had cancer.
+For stable-diffusion-2 model + DreamBooth method, run
+```
+bash dreambooth_2.sh
+```
 
-The next cell, loads the finetuned UNet from the DiffusionPipeline and inserts this into the StableDiffusionImg2ImgPipeline pipeline
+For stable-diffusion-2 model + DreamBooth with LORA method, run
+```
+bash dreambooth_lora_2.sh
+```
 
-The third cell does generation on a few images from the ultrasound/normal directory. It loads one normal image and a user prompt. The prompt and image are later parsed through the StableDiffusionImg2ImgPipeline and a new image, in the style of the input image is generated with changes directed by the input prompt.
 
-For example,
 
-If we input ultrasound/normal (5).png and the prompt "ultra sound image of breast with malignant cancer". we would generate the following image.
 
-![alt img](https://github.com/Aniloid2/LLM_bio_hackathon/ultrasound/normal/normal (5).png)
+
+## Inference
+
+
+
+
+
