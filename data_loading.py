@@ -17,3 +17,5 @@ for filename in os.listdir(source_dir):
         # copy the file if it's not start with the unwanted_name
         if unwanted_word not in filename:
             shutil.copy2(source, destination)
+            shutil.copy2(source, 'ultrasound')
+    
