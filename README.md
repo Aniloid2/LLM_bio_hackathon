@@ -1,20 +1,22 @@
 # LLM_bio_hackathon
+
 hackathon repository for llm bio hackathon 2023
 
-create a conda enviroment with 
+create a conda enviroment with
 
+```
 conda env create -f environment.yml
+```
 
 go into diffusers folder
 
 cd diffusers
 
-then do 
+then do
 
-accelerate config
+`accelerate config`
 
-the file (default_config.yaml) in the following folder (~/.cache/huggingface/accelerate) has to look like the following 
-
+the file (default_config.yaml) in the following folder (~/.cache/huggingface/accelerate) has to look like the following
 
 compute_environment: LOCAL_MACHINE
 distributed_type: 'NO'
@@ -32,11 +34,7 @@ tpu_use_cluster: false
 tpu_use_sudo: false
 use_cpu: false
 
-
-
-
-
-train model with 
+train model with
 bash train_start.sh
 
 This will generate 100 class specific images and insert them in the ultrasoung_classbase folder
