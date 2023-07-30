@@ -135,6 +135,28 @@ The output image will be saved in the folder `saved_images/img2img`.
 
 ## Some examples for the generated ultrasound images
 
+
+### `stable-diffusion-v1` with prompt '*a ultrasound image of breast with two small  benign tumor*'
 ![f](./saved_images/example_for_pre/us-benign.png "Title")
 
+
+### `stable-diffusion-v1` with prompt '*a ultrasound image of normal breast*'
+![f](./saved_images/example_for_pre/us-normal.png "Title")
+
+
+### `stable-diffusion-v1` with prompt '*a ultrasound image of breast with a malignant tumor with unclear boundary*'
+![f](./saved_images/example_for_pre/us-malignant.png "Title")
+
+
+
+### `stable-diffusion-v2` with prompt '*a ultrasound image of breast with two small  benign tumor*'
+![f](./saved_images/example_for_pre/us-stable2-benign.png "Title")
+
+
+### `stable-diffusion-v2` with prompt '*a ultrasound image of normal breast*'
+![f](./saved_images/example_for_pre/us-stable2-normal.png "Title")
+
+
+### `stable-diffusion-v2` with prompt '*a ultrasound image of breast with a malignant tumor with unclear boundary*'
+![f](./saved_images/example_for_pre/us-stable2-malignant.png "Title")
 
