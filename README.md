@@ -21,6 +21,7 @@ conda env create -f environment.yml
 ```
 
 then
+
 ```
 conda activate ultrasound
 ```

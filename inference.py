@@ -20,6 +20,11 @@ from pathlib import Path
 import re
 from PIL import Image
 
+def slugify(text):
+   text = re.sub(r"[^\w\s]", "", text)
+   text = re.sub(r"\s+", "-", text)
+   return text
+
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 # Step 2: Create the pipeline with your UNet model
@@ -49,52 +54,52 @@ generator = torch.Generator(device=device).manual_seed(seed)
 #  "/home/brianformento/Dataset_BUSI_with_GT/normal/normal (7).png"]
 
 
-images = ["./ultrasound/normal/normal (5).png",
-"./ultrasound/normal/normal (6).png" ,
- "./ultrasound/normal/normal (7).png"]
+# images = ["./ultrasound/normal/normal (5).png",
+# "./ultrasound/normal/normal (6).png" ,
+#  "./ultrasound/normal/normal (7).png"]
 
-# list all images in a directory
+from os import listdir
+from os.path import isfile, join
+images = ["./ultrasound/normal/"+f for f in listdir("./ultrasound/normal/") if isfile(join("./ultrasound/normal/", f))][:10]
+
 
 
 init_images = [Image.open(image).convert("RGB").resize((768,768)) for image in images] 
 
 
-
-prompts = ["ultra sound image of breast with malignant cancer",
-           "ultra sound image of breast with malignant cancer", 
-           "ultra sound image of breast with malignant cancer"]
+img_list_len = len(images)
+prompts = ["ultra sound image of breast with malignant cancer"]*img_list_len
 
 
-DIR_NAME="./images_preprocessed/"
+DIR_NAME="./full_images_preprocessed/"
 dirpath_preprocessed = Path(DIR_NAME)
 # create parent dir if doesn't exist
 dirpath_preprocessed.mkdir(parents=True, exist_ok=True)
 
-for idx, (image,prompt) in enumerate(zip(init_images, prompts )):
+edited_image_save_name = ["normal_image_768"]*img_list_len
+
+for idx, (image,prompt) in enumerate(zip(init_images, edited_image_save_name )):
     image_name = f'{slugify(prompt)}-{idx}.png'
     image_path = dirpath_preprocessed / image_name
     image.save(image_path)
 
-negative_prompts = ["ultrasound scanning device",
-                    "ultrasound scanning device",
-                    "ultrasound scanning device"]
+negative_prompts = ["ultrasound scanning device" ]*img_list_len
 
-output =  pipe(prompts, negative_prompt=negative_prompts, image=init_images, num_inference_steps=steps,
-guidance_scale=scale, num_images_per_prompt=num_images_per_prompt, generator=generator)
-
+for i in range(img_list_len):
+    output =  pipe(prompts[i], negative_prompt=negative_prompts[i], image=init_images[i], num_inference_steps=steps,
+    guidance_scale=scale, num_images_per_prompt=num_images_per_prompt, generator=generator)
 
 
-DIR_NAME="./images_generated_image_to_image/"
-dirpath = Path(DIR_NAME)
-# create parent dir if doesn't exist
-dirpath.mkdir(parents=True, exist_ok=True)
 
-def slugify(text):
-   text = re.sub(r"[^\w\s]", "", text)
-   text = re.sub(r"\s+", "-", text)
-   return text
 
-for idx, (image,prompt) in enumerate(zip(output.images, prompts*num_images_per_prompt)):
-    image_name = f'{slugify(prompt)}-{idx}.png'
-    image_path = dirpath / image_name
-    image.save(image_path)
+    DIR_NAME="./full_images_generated_image_to_image/"
+    dirpath = Path(DIR_NAME)
+    # create parent dir if doesn't exist
+    dirpath.mkdir(parents=True, exist_ok=True)
+
+
+
+    for idx, (image,prompt) in enumerate(zip(output.images, prompts[i]*num_images_per_prompt)):
+        image_name = f'{slugify(prompt)}-{i}.png'
+        image_path = dirpath / image_name
+        image.save(image_path)
