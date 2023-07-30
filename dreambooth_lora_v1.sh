@@ -1,9 +1,9 @@
 export MODEL_NAME="runwayml/stable-diffusion-v1-5"
 export INSTANCE_DIR="ultrasound/normal"
 export CLASS_DIR='ultrasound'
-export OUTPUT_DIR="model"
+export OUTPUT_DIR="dreambooth_lora_v1"
 
-accelerate launch /home/fusheng/hackthon/diffusers/examples/dreambooth/train_dreambooth_lora.py \
+accelerate launch diffusers/examples/dreambooth/train_dreambooth_lora.py \
   --pretrained_model_name_or_path=$MODEL_NAME  \
   --instance_data_dir=$INSTANCE_DIR \
   --class_data_dir=$CLASS_DIR \
@@ -25,14 +25,10 @@ accelerate launch /home/fusheng/hackthon/diffusers/examples/dreambooth/train_dre
 
 
 
-
-export MODEL_NAME='runwayml/stable-diffusion-v1-5'
 export resume_ckt='model/checkpoint-1000'
 export INSTANCE_DIR="ultrasound/benign"
-export CLASS_DIR='ultrasound'
-export OUTPUT_DIR="model"
 
-accelerate launch /home/fusheng/hackthon/diffusers/examples/dreambooth/train_dreambooth_lora.py \
+accelerate launch diffusers/examples/dreambooth/train_dreambooth_lora.py \
   --pretrained_model_name_or_path=$MODEL_NAME  \
   --instance_data_dir=$INSTANCE_DIR \
   --class_data_dir=$CLASS_DIR \
@@ -61,7 +57,7 @@ export INSTANCE_DIR="ultrasound/malignant"
 export CLASS_DIR='ultrasound'
 export OUTPUT_DIR="model"
 
-accelerate launch /home/fusheng/hackthon/diffusers/examples/dreambooth/train_dreambooth_lora.py \
+accelerate launch diffusers/examples/dreambooth/train_dreambooth_lora.py \
   --pretrained_model_name_or_path=$MODEL_NAME  \
   --instance_data_dir=$INSTANCE_DIR \
   --class_data_dir=$CLASS_DIR \
