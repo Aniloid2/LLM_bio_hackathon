@@ -106,7 +106,15 @@ The saved checkpoints are in the folder `dreambooth_lora_v1`.
 
 ## Inference
 
+For the inference part, we have two kinds of pipelines:
+* text -> image
+* image + text -> image
 
 
-
-
+After we obtain the checkpoints for the fine-tuned models, we can do inference with a text prompt.
+For the stable-diffusion-v1 model + DreamBooth_LORA method, run
+```
+python inference_text2img_lora_v1.py
+```
+by changing the prompt to your own text prompt.
+The output image will be saved in the folder `saved_images/dreambooth_lora_v1`.
