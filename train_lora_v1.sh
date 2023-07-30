@@ -25,7 +25,7 @@ accelerate launch diffusers/examples/dreambooth/train_dreambooth_lora.py \
 
 
 
-export resume_ckt='model/checkpoint-1000'
+export resume_ckt='dreambooth_lora_v1/checkpoint-1000'
 export INSTANCE_DIR="ultrasound/benign"
 
 accelerate launch diffusers/examples/dreambooth/train_dreambooth_lora.py \
@@ -51,11 +51,9 @@ accelerate launch diffusers/examples/dreambooth/train_dreambooth_lora.py \
 
 
 
-export MODEL_NAME='runwayml/stable-diffusion-v1-5'
-export resume_ckt='model/checkpoint-2000'
+
+export resume_ckt='dreambooth_lora_v1/checkpoint-2000'
 export INSTANCE_DIR="ultrasound/malignant"
-export CLASS_DIR='ultrasound'
-export OUTPUT_DIR="model"
 
 accelerate launch diffusers/examples/dreambooth/train_dreambooth_lora.py \
   --pretrained_model_name_or_path=$MODEL_NAME  \
