@@ -78,22 +78,22 @@ accelerate config
 
 Then run the following code to fine-tune in a stable-diffusion-v1 model by DreamBooth with LORA method.
 ```
-bash dreambooth_lora_v1.sh
+bash train_lora_v1.sh
 ```
 
 For stable-diffusion-v1 model + DreamBooth method, run
 ```
-bash dreambooth_v1.sh
+bash train_v1.sh
 ```
 
 For stable-diffusion-2 model + DreamBooth method, run
 ```
-bash dreambooth_2.sh
+bash train_v2.sh
 ```
 
 For stable-diffusion-2 model + DreamBooth with LORA method, run
 ```
-bash dreambooth_lora_2.sh
+bash train_lora_v2.sh
 ```
 
 
