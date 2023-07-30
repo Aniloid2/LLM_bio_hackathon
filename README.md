@@ -1,6 +1,18 @@
 # LLM_bio_hackathon
 hackathon repository for llm bio hackathon 2023
 
+install conda on linux with 
+
+wget https://repo.anaconda.com/archive/Anaconda3-2023.07-1-Linux-x86_64.sh
+
+or the latest version from https://www.anaconda.com/download#downloads for your particular machine
+
+Then do:
+
+bash Anaconda3-2023.07-1-Linux-x86_64.sh
+
+and follow the installation guide
+
 create a conda enviroment with 
 
 conda env create -f environment.yml
