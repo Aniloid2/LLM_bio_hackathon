@@ -1,6 +1,41 @@
 # LLM_bio_hackathon
 hackathon repository for llm bio hackathon 2023
 
+create a conda enviroment with 
+
+conda env create -f environment.yml
+
+go into diffusers folder
+
+cd diffusers
+
+then do 
+
+accelerate config
+
+the file (default_config.yaml) in the following folder (~/.cache/huggingface/accelerate) has to look like the following 
+
+
+compute_environment: LOCAL_MACHINE
+distributed_type: 'NO'
+downcast_bf16: 'no'
+gpu_ids: '1'
+machine_rank: 0
+main_training_function: main
+mixed_precision: 'no'
+num_machines: 1
+num_processes: 1
+rdzv_backend: static
+same_network: true
+tpu_env: []
+tpu_use_cluster: false
+tpu_use_sudo: false
+use_cpu: false
+
+
+
+
+
 train model with 
 bash train_start.sh
 
