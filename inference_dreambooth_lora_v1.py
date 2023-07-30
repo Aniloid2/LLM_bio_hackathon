@@ -9,6 +9,4 @@ pipe.to("cuda")
 pipe.unet.load_attn_procs("dreambooth_lora_v1/checkpoint-3000")
 prompt = 'a healthy breast ultrasound image'
 image = pipe(prompt, num_inference_steps=25).images[0]
-plt.title(prompt)
-plt.axis('off')
-plt.imshow(image)
+image.save(f'saved_images/dreambooth_lora_v1/{prompt}.png')
