@@ -20,6 +20,10 @@ create a conda enviroment with
 conda env create -f environment.yml
 ```
 
+Also, clone the diffusers library in the local reposetory
+
+with git clone https://github.com/huggingface/diffusers.git
+
 Downloading the dataset with Kaggle from:
 
 https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset

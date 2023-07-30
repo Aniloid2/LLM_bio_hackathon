@@ -44,9 +44,17 @@ generator = torch.Generator(device=device).manual_seed(seed)
 # "/home/brianformento/Dataset_BUSI_with_GT/benign/benign (1).png" ,
 #  "/home/brianformento/Dataset_BUSI_with_GT/malignant/malignant (1).png"]
 
-images = ["/home/brianformento/Dataset_BUSI_with_GT/normal/normal (5).png",
-"/home/brianformento/Dataset_BUSI_with_GT/normal/normal (6).png" ,
- "/home/brianformento/Dataset_BUSI_with_GT/normal/normal (7).png"]
+# images = ["/home/brianformento/Dataset_BUSI_with_GT/normal/normal (5).png",
+# "/home/brianformento/Dataset_BUSI_with_GT/normal/normal (6).png" ,
+#  "/home/brianformento/Dataset_BUSI_with_GT/normal/normal (7).png"]
+
+
+images = ["./ultrasound/normal/normal (5).png",
+"./ultrasound/normal/normal (6).png" ,
+ "./ultrasound/normal/normal (7).png"]
+
+# list all images in a directory
+
 
 init_images = [Image.open(image).convert("RGB").resize((768,768)) for image in images] 
 
