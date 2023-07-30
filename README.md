@@ -41,7 +41,7 @@ Then create three folders `benign`, `malignant` and `normal` to store the corres
 
 This can be done by runing 
 ```
-python data.py
+python data_loading.py
 ```
 
 Remember to change the `source_dir` and `destination_dir` for different classes in the `data.py`.
