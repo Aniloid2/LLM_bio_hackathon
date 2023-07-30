@@ -20,6 +20,10 @@ create a conda enviroment with
 conda env create -f environment.yml
 ```
 
+then
+```
+conda activate ultrasound
+```
 Also, clone the diffusers library in the local reposetory
 
 with git clone https://github.com/huggingface/diffusers.git
