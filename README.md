@@ -160,3 +160,12 @@ The output image will be saved in the folder `saved_images/img2img`.
 ### `stable-diffusion-v2` with prompt '*a ultrasound image of breast with a malignant tumor with unclear boundary*'
 ![f](./saved_images/example_for_pre/us-stable2-malignant.png "Title")
 
+## WebApp
+
+We use Gradio to crate a small webapp to do generation
+
+```
+python inference_img2img_gradio.py
+```
+
+Through this interface at 127.0.0.1:7860, you can upload an image along with a prompt and a negative prompt. It will generate four images with four seeds. We have found that using the prompt 'ultrasound image with a malignant tumor' and the negative prompt 'ultrasound scanning device' yields good results.
