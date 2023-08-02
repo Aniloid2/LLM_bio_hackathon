@@ -58,30 +58,30 @@ def fake_gan(prompt_1, prompt_2, image):
 
    
 
-    # prompts = ["ultra sound image of breast with malignant cancer" ]
+    # prompts = ["ultrasound image with malignant tumor" ]
     prompts = [prompt_1]
     
 
     # negative_prompts = ["ultrasound scanning device" ]
     negative_prompts = [prompt_2]
 
-    output =  pipe(prompts, negative_prompt=negative_prompts, image=init_images, num_inference_steps=steps,
-        guidance_scale=scale, num_images_per_prompt=num_images_per_prompt, generator=generator)
-    images = output.images
-
-    return images
-    
-    # seeds = [1,2,3,9]
-    # outputted_images = []
-    # for i in seeds:
-    #     seed = i
-    #     generator = torch.Generator(device=device).manual_seed(seed)
-    #     output =  pipe(prompts, negative_prompt=negative_prompts, image=init_images, num_inference_steps=steps,
+    # output =  pipe(prompts, negative_prompt=negative_prompts, image=init_images, num_inference_steps=steps,
     #     guidance_scale=scale, num_images_per_prompt=num_images_per_prompt, generator=generator)
-    #     # outputted_images.append((output.images,f'label {i}'))
-    #     outputted_images.append(output.images)
+    # images = output.images
+ 
+    
+    
+    seeds = [1,2,3,9]
+    outputted_images = []
+    for i in seeds:
+        seed = i
+        generator = torch.Generator(device=device).manual_seed(seed)
+        output =  pipe(prompts, negative_prompt=negative_prompts, image=init_images, num_inference_steps=steps,
+        guidance_scale=scale, num_images_per_prompt=num_images_per_prompt, generator=generator)
+        # outputted_images.append((output.images,f'label {i}'))
+        outputted_images.append(output.images[0])
 
-    # images = outputted_images
+    new_images = outputted_images
 
 
             
