@@ -171,7 +171,6 @@ python inference_img2img_gradio.py
 Through this interface at 127.0.0.1:7860, you can upload an image along with a prompt and a negative prompt. It will generate four images with four seeds. We have found that using the prompt 'ultrasound image with a malignant tumor' and the negative prompt 'ultrasound scanning device' yields good results.
 
 
-https://raw.githubusercontent.com/Aniloid2/LLM_bio_hackathon/blob/master/single_example_soft_tissue_cancer_simulator.mp4
+https://raw.githubusercontent.com/Aniloid2/LLM_bio_hackathon/master/single_example_soft_tissue_cancer_simulator.mp4
 
-<video src='https://github.com/Aniloid2/LLM_bio_hackathon/blob/master/single_example_soft_tissue_cancer_simulator.mp4' width=180/></video>
  
