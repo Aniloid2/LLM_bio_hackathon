@@ -171,13 +171,13 @@ python inference_img2img_gradio.py
 Through this interface at 127.0.0.1:7860, you can upload an image along with a prompt and a negative prompt. It will generate four images with four seeds. We have found that using the prompt 'ultrasound image with a malignant tumor' and the negative prompt 'ultrasound scanning device' yields good results.
 
 ## Example of generation with one sample
-An example of how to do generation using the webapp.
+An example of how to do generation using the web app. The following example inputs malignant carcinogen-related tumor markers in an input image with four different initialization seeds. This gives four potential ways that cancer may appear in the same tissue.
 
 https://github.com/Aniloid2/LLM_bio_hackathon/assets/17166325/13a71d33-598b-4810-aff1-b3f40a29bd5e
 
 
 ## Highlighting the Significance of the Image Guidance Feature
-Other generation methods are text-to-image only, allowing comparison between a normal tissue scan and a randomly generated cancer image. Using image+text prompting allows inputting disease markers within the same input image, allowing for a real 1 to 1 comparison between normal tissue and the hypothetical same tissue with cancerogeneous disease markers.
+Other generation methods are text-to-image only, allowing comparison between a normal tissue scan and a randomly generated cancer image. Using image+text prompting allows inputting disease markers within the same input image, allowing for a real one to one comparison between normal tissue and the hypothetical same tissue with cancerogeneous disease markers.
 
 https://github.com/Aniloid2/LLM_bio_hackathon/assets/17166325/e7b08d67-5330-4e3a-a1df-5ebedae9522b
 
