@@ -1,7 +1,8 @@
 # LLM bio hackathon (Ultrasound image simulator)
 
-## Some examples for the generated ultrasound images
+We have developed multiple models for this hackathon to generate images of soft tissue with cancer. There are two main models, a text-to-image system that generates random images given a prompt and a text+image-to-image model that inputs disease markers in an input image.
 
+## Some examples for the generated ultrasound images (text-to-image)
 
 ### `stable-diffusion-v1` with prompt '*a ultrasound image of breast with two small  benign tumor*'
 ![f](./saved_images/example_for_pre/us-benign.png "Title")
@@ -27,7 +28,10 @@
 ### `stable-diffusion-v2` with prompt '*a ultrasound image of breast with a malignant tumor with unclear boundary*'
 ![f](./saved_images/example_for_pre/us-stable2-malignant.png "Title")
 
-## WebApp
+
+The second model is a text+image-to-image model designed to input cancer disease markers in an input image. There is a front-end application to do this. Some examples are shown in the video below.
+
+## WebApp (text+image-to-image)
 
 We use Gradio to crate a small webapp to do generation
 
@@ -37,13 +41,13 @@ python inference_img2img_gradio.py
 
 Through this interface at 127.0.0.1:7860, you can upload an image along with a prompt and a negative prompt. It will generate four images with four seeds. We have found that using the prompt 'ultrasound image with a malignant tumor' and the negative prompt 'ultrasound scanning device' yields good results.
 
-## Example of generation with one sample
+## Example of generation with one sample (text+image-to-image)
 An example of how to do generation using the web app. The following example inputs malignant carcinogen-related tumor markers in an input image with four different initialization seeds. This gives four potential ways that cancer may appear in the same tissue.
 
 https://github.com/Aniloid2/LLM_bio_hackathon/assets/17166325/13a71d33-598b-4810-aff1-b3f40a29bd5e
 
 
-## Highlighting the Significance of the Image Guidance Feature
+## Highlighting the Significance of the Image Guidance Feature (text+image-to-image)
 Other generation methods are text-to-image only, allowing comparison between a normal tissue scan and a randomly generated cancer image. Using image+text prompting allows inputting disease markers within the same input image, allowing for a real one to one comparison between normal tissue and the hypothetical same tissue with cancerogeneous disease markers.
 
 https://github.com/Aniloid2/LLM_bio_hackathon/assets/17166325/e7b08d67-5330-4e3a-a1df-5ebedae9522b
